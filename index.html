@@ -31,9 +31,14 @@
       margin-bottom: 10px;
       font-size: 2em;
     }
-    p {
-      margin-bottom: 20px;
+    .subtitle {
       font-size: 1.1em;
+      margin-bottom: 10px;
+    }
+    .note {
+      font-size: 1em;
+      margin-bottom: 20px;
+      opacity: 0.95;
     }
     .countdown {
       display: grid;
@@ -82,7 +87,8 @@
 
 <div class="container">
   <h1>💖 Nuestra cita especial 💖</h1>
-  <p>Falta exactamente:</p>
+  <div class="subtitle">25 de marzo de 2026 • En la noche 🌙</div>
+  <div class="note">Pasaré por ti a tu house 🏡✨</div>
 
   <div class="countdown">
     <div class="box">
@@ -105,8 +111,8 @@
 </div>
 
 <script>
-  // Countdown
-  const targetDate = new Date("2026-03-25T00:00:00");
+  // Cuenta regresiva - 25 de marzo 2026 a las 8:00 PM
+  const targetDate = new Date("2026-03-25T20:00:00");
 
   function updateCountdown() {
     const now = new Date();
@@ -114,7 +120,7 @@
 
     if (diff <= 0) {
       document.querySelector(".container").innerHTML =
-        "<h1>💖 Hoy es el día 💖</h1><p>Espero que estés lista para nuestra cita ✨</p>";
+        "<h1>💖 Ya es hora 💖</h1><p>Estoy en camino por ti…</p><p>💍✨</p>";
       return;
     }
 
@@ -132,7 +138,7 @@
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
-  // Hearts generator
+  // Corazones flotando
   function createHeart() {
     const heart = document.createElement("div");
     heart.className = "heart";
@@ -143,9 +149,7 @@
 
     document.body.appendChild(heart);
 
-    setTimeout(() => {
-      heart.remove();
-    }, 7000);
+    setTimeout(() => heart.remove(), 7000);
   }
 
   setInterval(createHeart, 500);
